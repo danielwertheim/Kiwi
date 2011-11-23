@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <metadata>
+    <id>Kiwi</id>    
+    <title>Kiwi</title>
+	<version>0.0.0.0</version>
+	<authors>Daniel Wertheim - @@danielwertheim - http://daniel.wertheim.se</authors>
+	<owners>Daniel Wertheim - @@danielwertheim - http://daniel.wertheim.se</owners>
+	<summary>Kiwi helps you embed your GitHub wiki locally, e.g in an ASP.Net MVC app.</summary>
+    <description>
+		Kiwi helps you embed your GitHub wiki locally, e.g in an ASP.Net MVC app. I'm using my GitHub Wiki and
+		also want the wiki documentation at the project website as well. Kiwi helps me with that.
+	</description>
+	<projectUrl>http://github.com/danielwertheim/kiwi</projectUrl>
+	<licenseUrl>http://github.com/danielwertheim/kiwi/blob/master/Source/License-Kiwi.txt</licenseUrl>
+	<requireLicenseAcceptance>false</requireLicenseAcceptance>
+	<tags>wiki,github,markdown</tags>
+	<dependencies>
+	  <dependency id="ColorCode" version="1.0.1" />
+      <dependency id="MarkdownSharp" version="1.13.0.0" />
+	</dependencies>
+  </metadata>
+  <files>
+    <file src="Kiwi.dll" target="lib" />
+	<file src="Kiwi.xml" target="lib" />
+	<file src="License*.txt" />
+  </files>  
+</package>
