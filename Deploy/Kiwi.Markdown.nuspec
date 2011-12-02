@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
   <metadata>
-    <id>Kiwi</id>    
-    <title>Kiwi</title>
+    <id>Kiwi.Markdown</id>    
+    <title>Kiwi.Markdown</title>
 	<version>0.0.0.0</version>
 	<authors>Daniel Wertheim - @@danielwertheim - http://daniel.wertheim.se</authors>
 	<owners>Daniel Wertheim - @@danielwertheim - http://daniel.wertheim.se</owners>
-	<summary>Kiwi helps you embed your GitHub wiki locally, e.g in an ASP.Net MVC app.</summary>
+	<copyright>Daniel Wertheim</copyright>
+	<summary>Kiwi.Markdown helps you embed your GitHub wiki locally by transforming GitHub flavored Markdown to HTML with support for syntax highlighting.</summary>
     <description>
-		Kiwi helps you embed your GitHub wiki locally, e.g in an ASP.Net MVC app. I'm using my GitHub Wiki and
-		also want the wiki documentation at the project website as well. Kiwi helps me with that.
+		Kiwi.Markdown helps you embed your GitHub wiki locally by transforming GitHub flavored Markdown to HTML with support for syntax highlighting.
+		Useful in e.g an ASP.Net MVC app. I'm using my GitHub Wiki and also want the wiki documentation at the project website as well. Kiwi helps me with that.
 	</description>
 	<projectUrl>http://github.com/danielwertheim/kiwi</projectUrl>
 	<licenseUrl>http://github.com/danielwertheim/kiwi/blob/master/Source/License-Kiwi.txt</licenseUrl>
@@ -21,8 +22,8 @@
 	</dependencies>
   </metadata>
   <files>
-    <file src="Kiwi.dll" target="lib" />
-	<file src="Kiwi.xml" target="lib" />
+    <file src="Kiwi.Markdown.dll" target="lib\net40" />
+	<file src="Kiwi.Markdown.xml" target="lib\net40" />
 	<file src="License*.txt" />
   </files>  
 </package>

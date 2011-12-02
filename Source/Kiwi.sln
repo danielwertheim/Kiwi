@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kiwi.Specifications", "Test
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{D9596BDD-3F90-48D9-8027-EC2C283AF714}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kiwi.UnitTests", "Tests\Kiwi.UnitTests\Kiwi.UnitTests.csproj", "{A2808980-7667-42A9-9686-085F8ADF40BD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,11 +29,16 @@ Global
 		{229818D1-B95E-41B1-BE1D-E00C8FD131AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{229818D1-B95E-41B1-BE1D-E00C8FD131AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{229818D1-B95E-41B1-BE1D-E00C8FD131AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2808980-7667-42A9-9686-085F8ADF40BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2808980-7667-42A9-9686-085F8ADF40BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2808980-7667-42A9-9686-085F8ADF40BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2808980-7667-42A9-9686-085F8ADF40BD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{229818D1-B95E-41B1-BE1D-E00C8FD131AE} = {D9596BDD-3F90-48D9-8027-EC2C283AF714}
+		{A2808980-7667-42A9-9686-085F8ADF40BD} = {D9596BDD-3F90-48D9-8027-EC2C283AF714}
 	EndGlobalSection
 EndGlobal

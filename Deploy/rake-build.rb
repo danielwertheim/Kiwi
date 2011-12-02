@@ -33,9 +33,9 @@ task :buildIt => [:versionIt, :compileIt, :copyBinaries]
 
 task :testIt => [:unittests, :specifications]
 
-task :packageIt => [:createZip, :createNuGet]
+task :packageIt => [:createZip, :createKiwiMarkdownNuGet]
 
-task :deployIt => [:publishNuGet]
+task :deployIt => [:publishKiwiMarkDownNuGet]
 #--------------------------------------
 # Albacore tasks
 #--------------------------------------
@@ -66,13 +66,13 @@ end
 nunit :unittests do |nunit|
   nunit.command = "#{@env_solutionfolderpath}packages/NUnit.2.5.10.11092/tools/nunit-console.exe"
   nunit.options "/framework=v4.0.30319","/xml=#{@env_buildfolderpath}NUnit-Report-#{@env_projectname}-UnitTests.xml"
-  nunit.assemblies = FileList["#{@env_solutionfolderpath}Tests/**/#{@env_buildconfigname}/*.Specifications.dll"].exclude(/obj\//)
+  nunit.assemblies FileList["#{@env_solutionfolderpath}Tests/#{@env_solutionname}.UnitTests/bin/#{@env_buildconfigname}/#{@env_solutionname}.UnitTests.dll"].exclude(/obj\//)
 end
 
 mspec :specifications do |mspec|
-  mspec.command = "packages/Machine.Specifications.0.5.0.0/tools/mspec-clr4.exe"
-  mspec.options = "--html #{@env_buildfolderpath}MSpec-Report-#{@env_projectname}-Specifications.html"
-  mspec.assemblies = FileList["#{@env_solutionfolderpath}Tests/**/#{@env_buildconfigname}/*.Specifications.dll"].exclude(/obj\//)
+  mspec.command = "#{@env_solutionfolderpath}packages/Machine.Specifications.0.5.0.0/tools/mspec-clr4.exe"
+  mspec.options "--html #{@env_buildfolderpath}MSpec-Report-#{@env_projectname}.html"
+  mspec.assemblies FileList["#{@env_solutionfolderpath}Tests/#{@env_solutionname}.Specifications/bin/#{@env_buildconfigname}/#{@env_solutionname}.Specifications.dll"].exclude(/obj\//)
 end
 
 zip :createZip do |zip|
@@ -81,12 +81,12 @@ zip :createZip do |zip|
   zip.output_path = @env_buildfolderpath
 end
 
-exec :createNuGet do |cmd|
+exec :createKiwiMarkdownNuGet do |cmd|
   cmd.command = "NuGet.exe"
-  cmd.parameters = "pack #{@env_solutionname}.nuspec -version #{@env_buildversion} -basepath #{@env_binariesfolderpath} -outputdirectory #{@env_buildfolderpath}"
+  cmd.parameters = "pack #{@env_projectname}.nuspec -version #{@env_buildversion} -basepath #{@env_binariesfolderpath} -outputdirectory #{@env_buildfolderpath}"
 end
 
-exec :publishNuGet do |cmd|
+exec :publishKiwiMarkdownNuGet do |cmd|
   cmd.command = "NuGet.exe"
-  cmd.parameters = "push #{@env_buildfolderpath}#{@env_solutionname}.#{@env_buildversion}.nupkg #{@env_nugetPublishApiKey} -src #{@env_nugetPublishUrl}"
+  cmd.parameters = "push #{@env_buildfolderpath}#{@env_projectname}.#{@env_buildversion}.nupkg #{@env_nugetPublishApiKey} -src #{@env_nugetPublishUrl}"
 end
