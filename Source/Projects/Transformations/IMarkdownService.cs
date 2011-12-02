@@ -1,4 +1,4 @@
-namespace Kiwi
+namespace Kiwi.Transformations
 {
     public interface IMarkdownService
     {

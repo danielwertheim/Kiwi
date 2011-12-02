@@ -1,12 +1,12 @@
 using System;
 
-namespace Kiwi
+namespace Kiwi.Transformations
 {
     [Serializable]
     public class Document
     {
         public string Title { get; set; }
 
-        public string TransformedMarkdown { get; set; }
+        public string Content { get; set; }
     }
 }
