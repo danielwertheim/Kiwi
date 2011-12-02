@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kiwi.Markdown", "Projects\Kiwi.Markdown\Kiwi.Markdown.csproj", "{36C2C8F1-9B44-48C9-A281-E68E78AE2C91}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1D9163E2-2024-4B96-905B-35E4D08F449D}"
+	ProjectSection(SolutionItems) = preProject
+		License-Kiwi.txt = License-Kiwi.txt
+		SharedAssemblyInfo.cs = SharedAssemblyInfo.cs
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kiwi.Specifications", "Tests\Kiwi.Specifications\Kiwi.Specifications.csproj", "{229818D1-B95E-41B1-BE1D-E00C8FD131AE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{D9596BDD-3F90-48D9-8027-EC2C283AF714}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kiwi.UnitTests", "Tests\Kiwi.UnitTests\Kiwi.UnitTests.csproj", "{A2808980-7667-42A9-9686-085F8ADF40BD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{36C2C8F1-9B44-48C9-A281-E68E78AE2C91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36C2C8F1-9B44-48C9-A281-E68E78AE2C91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36C2C8F1-9B44-48C9-A281-E68E78AE2C91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36C2C8F1-9B44-48C9-A281-E68E78AE2C91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{229818D1-B95E-41B1-BE1D-E00C8FD131AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{229818D1-B95E-41B1-BE1D-E00C8FD131AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{229818D1-B95E-41B1-BE1D-E00C8FD131AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{229818D1-B95E-41B1-BE1D-E00C8FD131AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2808980-7667-42A9-9686-085F8ADF40BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2808980-7667-42A9-9686-085F8ADF40BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2808980-7667-42A9-9686-085F8ADF40BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2808980-7667-42A9-9686-085F8ADF40BD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{229818D1-B95E-41B1-BE1D-E00C8FD131AE} = {D9596BDD-3F90-48D9-8027-EC2C283AF714}
+		{A2808980-7667-42A9-9686-085F8ADF40BD} = {D9596BDD-3F90-48D9-8027-EC2C283AF714}
+	EndGlobalSection
+EndGlobal
