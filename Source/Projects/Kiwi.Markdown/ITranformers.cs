@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Kiwi.Transformations
+namespace Kiwi.Markdown
 {
 	public interface ITranformers
 	{

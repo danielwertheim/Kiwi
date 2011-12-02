@@ -40,7 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInitializer.cs" />
-    <Compile Include="Transformations\CompleteSpecification.cs" />
+    <Compile Include="Markdown\CompleteSpecification.cs" />
     <Compile Include="ContextCleanup.cs" />
     <Compile Include="ITestContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -48,20 +48,20 @@
     <Compile Include="TestContext.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Transformations\Complete-Specification.md">
+    <Content Include="Markdown\Complete-Specification.md">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Transformations\Complete-Specification.html">
+    <Content Include="Markdown\Complete-Specification.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Projects\Kiwi.csproj">
+    <ProjectReference Include="..\..\Projects\Kiwi.Markdown\Kiwi.Markdown.csproj">
       <Project>{36C2C8F1-9B44-48C9-A281-E68E78AE2C91}</Project>
-      <Name>Kiwi</Name>
+      <Name>Kiwi.Markdown</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

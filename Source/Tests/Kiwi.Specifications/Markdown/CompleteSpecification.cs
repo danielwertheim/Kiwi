@@ -1,8 +1,8 @@
-﻿using Kiwi.Transformations;
-using Kiwi.Transformations.ContentProviders;
+﻿using Kiwi.Markdown;
+using Kiwi.Markdown.ContentProviders;
 using Machine.Specifications;
 
-namespace Kiwi.Specifications.Transformations
+namespace Kiwi.Specifications.Markdown
 {
 	public static class ComplecteSpecificationHtml
 	{
@@ -10,7 +10,7 @@ namespace Kiwi.Specifications.Transformations
 	
 		static ComplecteSpecificationHtml()
 		{
-			Html = System.IO.File.ReadAllText(@"Transformations\Complete-Specification.html");
+			Html = System.IO.File.ReadAllText(@"Markdown\Complete-Specification.html");
 		}
 	}
 
@@ -18,7 +18,7 @@ namespace Kiwi.Specifications.Transformations
 	{
 		Establish context = () =>
 		{
-			_markdownService = new MarkdownService(new FileContentProvider("Transformations"));
+			_markdownService = new MarkdownService(new FileContentProvider("Markdown"));
 		};
 
 		Because of = 

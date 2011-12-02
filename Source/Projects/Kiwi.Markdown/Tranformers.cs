@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using ColorCode;
 
-namespace Kiwi.Transformations
+namespace Kiwi.Markdown
 {
 	public class Tranformers : ITranformers
 	{
@@ -46,12 +46,12 @@ namespace Kiwi.Transformations
 
 		protected virtual void OnInitializeTranformerRegExs()
 		{
-			_cSharpCodeBlocksRegExPreTrans = new Regex(@"^```c#(.*?)```", RegexOptions.Singleline | RegexOptions.Multiline | RegexOptions.IgnoreCase | RegexOptions.Compiled);
-			_jsCodeBlocksRegExPreTrans = new Regex(@"^```javascript(.*?)```", RegexOptions.Singleline | RegexOptions.Multiline | RegexOptions.IgnoreCase | RegexOptions.Compiled);
-			_htmlCodeBlocksRegExPreTrans = new Regex(@"^```html(.*?)```", RegexOptions.Singleline | RegexOptions.Multiline | RegexOptions.IgnoreCase | RegexOptions.Compiled);
-			_cssCodeBlocksRegExPreTrans = new Regex(@"^```css(.*?)```", RegexOptions.Singleline | RegexOptions.Multiline | RegexOptions.IgnoreCase | RegexOptions.Compiled);
+			_cSharpCodeBlocksRegExPreTrans = new Regex(@"^{0}c#(.*?){0}".Apply(CodeBlockMarker), RegexOptions.Singleline | RegexOptions.Multiline | RegexOptions.IgnoreCase | RegexOptions.Compiled);
+			_jsCodeBlocksRegExPreTrans = new Regex(@"^{0}javascript(.*?){0}".Apply(CodeBlockMarker), RegexOptions.Singleline | RegexOptions.Multiline | RegexOptions.IgnoreCase | RegexOptions.Compiled);
+			_htmlCodeBlocksRegExPreTrans = new Regex(@"^{0}html(.*?){0}".Apply(CodeBlockMarker), RegexOptions.Singleline | RegexOptions.Multiline | RegexOptions.IgnoreCase | RegexOptions.Compiled);
+			_cssCodeBlocksRegExPreTrans = new Regex(@"^{0}css(.*?){0}".Apply(CodeBlockMarker), RegexOptions.Singleline | RegexOptions.Multiline | RegexOptions.IgnoreCase | RegexOptions.Compiled);
 
-			_genericCodeBlocksRegExPreTrans = new Regex(@"^```(.*?)```", RegexOptions.Singleline | RegexOptions.Multiline | RegexOptions.IgnoreCase | RegexOptions.Compiled);
+			_genericCodeBlocksRegExPreTrans = new Regex(@"^{0}(.*?){0}".Apply(CodeBlockMarker), RegexOptions.Singleline | RegexOptions.Multiline | RegexOptions.IgnoreCase | RegexOptions.Compiled);
 		}
 
 		protected virtual void OnInitializeTranformerFuncs()

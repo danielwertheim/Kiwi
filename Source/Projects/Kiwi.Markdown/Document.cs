@@ -1,6 +1,6 @@
 using System;
 
-namespace Kiwi.Transformations
+namespace Kiwi.Markdown
 {
     [Serializable]
     public class Document

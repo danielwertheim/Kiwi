@@ -1,7 +1,7 @@
 using System.IO;
 using System.Text;
 
-namespace Kiwi.Transformations.ContentProviders
+namespace Kiwi.Markdown.ContentProviders
 {
 	public class FileContentProvider : IContentProvider
 	{

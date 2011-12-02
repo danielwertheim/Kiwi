@@ -1,11 +1,11 @@
 ﻿using System.Globalization;
 using MarkdownSharp;
 
-namespace Kiwi.Transformations
+namespace Kiwi.Markdown
 {
 	public class MarkdownService : IMarkdownService
     {
-        private readonly Markdown _markdown;
+        private readonly MarkdownSharp.Markdown _markdown;
         private readonly TextInfo _invariantTextInfo;
 
 		public ITranformers Tranformers { get; set; }
@@ -16,7 +16,7 @@ namespace Kiwi.Transformations
         {
             ContentProvider = contentProvider;
 
-            _markdown = new Markdown(CreateMarkdownOptions());
+            _markdown = new MarkdownSharp.Markdown(CreateMarkdownOptions());
 
             _invariantTextInfo = CultureInfo.InvariantCulture.TextInfo;
 

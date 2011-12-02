@@ -8,8 +8,8 @@
     <ProjectGuid>{36C2C8F1-9B44-48C9-A281-E68E78AE2C91}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Kiwi</RootNamespace>
-    <AssemblyName>Kiwi</AssemblyName>
+    <RootNamespace>Kiwi.Markdown</RootNamespace>
+    <AssemblyName>Kiwi.Markdown</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -42,23 +42,18 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\SharedAssemblyInfo.cs">
+    <Compile Include="..\..\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="Transformations\Document.cs" />
-    <Compile Include="Transformations\ContentProviders\FileContentProvider.cs" />
-    <Compile Include="Transformations\IContentProvider.cs" />
-    <Compile Include="Transformations\IMarkdownService.cs" />
-    <Compile Include="Transformations\ITranformers.cs" />
-    <Compile Include="Transformations\MarkdownService.cs" />
+    <Compile Include="CoreExtensions.cs" />
+    <Compile Include="Document.cs" />
+    <Compile Include="ContentProviders\FileContentProvider.cs" />
+    <Compile Include="IContentProvider.cs" />
+    <Compile Include="IMarkdownService.cs" />
+    <Compile Include="ITranformers.cs" />
+    <Compile Include="MarkdownService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Transformations\Tranformers.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="..\License-Kiwi.txt">
-      <Link>License-Kiwi.txt</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Compile Include="Tranformers.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

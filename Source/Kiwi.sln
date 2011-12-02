@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kiwi", "Projects\Kiwi.csproj", "{36C2C8F1-9B44-48C9-A281-E68E78AE2C91}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kiwi.Markdown", "Projects\Kiwi.Markdown\Kiwi.Markdown.csproj", "{36C2C8F1-9B44-48C9-A281-E68E78AE2C91}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1D9163E2-2024-4B96-905B-35E4D08F449D}"
 	ProjectSection(SolutionItems) = preProject
@@ -10,6 +10,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kiwi.Specifications", "Tests\Kiwi.Specifications\Kiwi.Specifications.csproj", "{229818D1-B95E-41B1-BE1D-E00C8FD131AE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{D9596BDD-3F90-48D9-8027-EC2C283AF714}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -28,5 +30,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{229818D1-B95E-41B1-BE1D-E00C8FD131AE} = {D9596BDD-3F90-48D9-8027-EC2C283AF714}
 	EndGlobalSection
 EndGlobal

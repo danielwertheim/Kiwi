@@ -10,7 +10,7 @@ require 'albacore'
 # Environment vars
 #--------------------------------------
 @env_solutionname = 'Kiwi'
-@env_projectname = 'Kiwi'
+@env_projectname = 'Kiwi.Markdown'
 @env_solutionfolderpath = "../Source/"
 @env_buildversion = "0.1.0" + (ENV['env_buildnumber'].to_s.empty? ? "" : ".#{ENV['env_buildnumber'].to_s}")
 @env_buildconfigname = ENV['env_buildconfigname'].to_s.empty? ? "Release" : ENV['env_buildconfigname'].to_s
@@ -31,7 +31,7 @@ task :local => [:buildIt, :testIt, :packageIt]
 #--------------------------------------
 task :buildIt => [:versionIt, :compileIt, :copyBinaries]
 
-task :testIt => [:runUnitTests]
+task :testIt => [:unittests, :specifications]
 
 task :packageIt => [:createZip, :createNuGet]
 
@@ -63,10 +63,16 @@ task :copyBinaries do
   FileUtils.cp_r(FileList["#{@env_solutionfolderpath}Projects/#{@env_projectname}/bin/#{@env_buildconfigname}/*.*"], @env_binariesfolderpath)
 end
 
-nunit :runUnitTests do |nunit|
+nunit :unittests do |nunit|
   nunit.command = "#{@env_solutionfolderpath}packages/NUnit.2.5.10.11092/tools/nunit-console.exe"
   nunit.options "/framework=v4.0.30319","/xml=#{@env_buildfolderpath}NUnit-Report-#{@env_projectname}-UnitTests.xml"
-  nunit.assemblies = FileList["#{@env_solutionfolderpath}Tests/**/#{@env_buildconfigname}/*.UnitTests.dll"].exclude(/obj\//)
+  nunit.assemblies = FileList["#{@env_solutionfolderpath}Tests/**/#{@env_buildconfigname}/*.Specifications.dll"].exclude(/obj\//)
+end
+
+mspec :specifications do |mspec|
+  mspec.command = "packages/Machine.Specifications.0.5.0.0/tools/mspec-clr4.exe"
+  mspec.options = "--html #{@env_buildfolderpath}MSpec-Report-#{@env_projectname}-Specifications.html"
+  mspec.assemblies = FileList["#{@env_solutionfolderpath}Tests/**/#{@env_buildconfigname}/*.Specifications.dll"].exclude(/obj\//)
 end
 
 zip :createZip do |zip|
