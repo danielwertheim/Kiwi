@@ -8,6 +8,13 @@ public class ExplicitCSharpBlock
 }
 ```
 
+``` c#
+public class ExplicitCSharpBlockWithSpace
+{
+    public int Value { get; set; }
+}
+```
+
 ```
 public class ImplicitCSharpBlock
 {
@@ -19,6 +26,10 @@ public class ImplicitCSharpBlock
 <div>Some explicit html</div>
 ```
 
+``` html
+<div>Some explicit html with space</div>
+```
+
 ```
 <div>Some implicit html</div>
 ```
@@ -28,5 +39,21 @@ public class ImplicitCSharpBlock
 ```
 
 ```css
+#explicitCssWithSpace { visibility: hidden; }
+```
+
+```css
 #implicitCss { visibility: hidden; }
+```
+
+```xml
+<xml><node>Some explicit xml</node></xml>
+```
+
+``` xml
+<xml><node>Some explicit xml with space</node></xml>
+```
+
+```
+<xml><node>Some implicit xml</node></xml>
 ```
