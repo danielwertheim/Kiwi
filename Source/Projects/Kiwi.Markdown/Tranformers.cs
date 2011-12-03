@@ -20,9 +20,9 @@ namespace Kiwi.Markdown
 		private Regex _xmlCodeBlocksRegExPreTrans;
 		private Regex _genericCodeBlocksRegExPreTrans;
 
-		public Func<string, string> PreGeneric { get; set; }
+		public Func<string, string> LineBreaks { get; set; }
 
-		public Func<string, string> PostGeneric { get; set; }
+		public Func<string, string> GenericCodeBlock { get; set; }
 
 		public Func<string, string> CSharp { get; set; }
 
@@ -61,6 +61,8 @@ namespace Kiwi.Markdown
 
 		protected virtual void OnInitializeTranformerFuncs()
 		{
+			LineBreaks = mc => mc.Replace("\r\n", "\n");
+
 			CSharp = mc => _cSharpCodeBlocksRegExPreTrans.Replace(mc, m => FormatAndColorize(m.Value, Languages.CSharp));
 
 			JavaScript = mc => _jsCodeBlocksRegExPreTrans.Replace(mc, m => FormatAndColorize(m.Value, Languages.JavaScript));
@@ -71,15 +73,13 @@ namespace Kiwi.Markdown
 
 			Xml = mc => _xmlCodeBlocksRegExPreTrans.Replace(mc, m => FormatAndColorize(m.Value, Languages.Xml));
 
-			PreGeneric = mc => _genericCodeBlocksRegExPreTrans.Replace(mc, m => FormatAndColorize(m.Value));
-
-			PostGeneric = mc => mc.Replace("\n", "\r\n");
+			GenericCodeBlock = mc => _genericCodeBlocksRegExPreTrans.Replace(mc, m => FormatAndColorize(m.Value));
 		}
 
 		protected virtual string FormatAndColorize(string value, ILanguage language = null)
 		{
 			var output = new StringBuilder();
-			foreach (var line in value.Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries).Where(s => !s.StartsWith(CodeBlockMarker)))
+			foreach (var line in value.Split(new[] { "\n" }, StringSplitOptions.RemoveEmptyEntries).Where(s => !s.StartsWith(CodeBlockMarker)))
 			{
 				if(language == null)
 					output.Append(new string(' ', 4));
@@ -92,8 +92,10 @@ namespace Kiwi.Markdown
 				: output.ToString();
 		}
 
-		public virtual IEnumerable<Func<string, string>> GetPreTransformers()
+		public virtual IEnumerable<Func<string, string>> GetTransformers()
 		{
+			yield return LineBreaks;
+
 			yield return CSharp;
 
 			yield return JavaScript;
@@ -104,12 +106,7 @@ namespace Kiwi.Markdown
 
 			yield return Xml;
 
-			yield return PreGeneric;
-		}
-
-		public virtual IEnumerable<Func<string, string>> GetPostTransformers()
-		{
-			yield return PostGeneric;
+			yield return GenericCodeBlock;
 		}
 	}
 }

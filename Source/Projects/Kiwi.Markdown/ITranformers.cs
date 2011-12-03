@@ -5,8 +5,8 @@ namespace Kiwi.Markdown
 {
 	public interface ITranformers
 	{
-		Func<string, string> PreGeneric { get; set; }
-		Func<string, string> PostGeneric { get; set; }
+		Func<string, string> LineBreaks { get; set; }
+		Func<string, string> GenericCodeBlock { get; set; }
 
 		Func<string, string> CSharp { get; set; }
 		Func<string, string> JavaScript { get; set; }
@@ -14,8 +14,6 @@ namespace Kiwi.Markdown
 		Func<string, string> Css { get; set; }
 		Func<string, string> Xml { get; set; }
 
-		IEnumerable<Func<string, string>> GetPreTransformers();
-
-		IEnumerable<Func<string, string>> GetPostTransformers();
+		IEnumerable<Func<string, string>> GetTransformers();
 	}
 }
