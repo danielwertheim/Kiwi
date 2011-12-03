@@ -45,15 +45,10 @@ namespace Kiwi.Markdown
 
         protected virtual string ApplyTransformation(string markdownContent)
         {
-            foreach (var preTransformation in Tranformers.GetPreTransformers())
+            foreach (var preTransformation in Tranformers.GetTransformers())
                 markdownContent = preTransformation.Invoke(markdownContent);
 
-			var transformed = _markdown.Transform(markdownContent);
-
-        	foreach (var postTransformer in Tranformers.GetPostTransformers())
-        		transformed = postTransformer.Invoke(transformed);
-
-        	return transformed;
+			return _markdown.Transform(markdownContent).Replace("\n", "\r\n");
         }
     }
 }
