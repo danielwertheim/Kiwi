@@ -1,6 +1,20 @@
 # Some H1
 Some text
 
+```csharp
+public class ExplicitCSharpBlock
+{
+    public int Value { get; set; }
+}
+```
+
+``` csharp
+public class ExplicitCSharpBlockWithSpace
+{
+    public int Value { get; set; }
+}
+```
+
 ```c#
 public class ExplicitCSharpBlock
 {
@@ -19,6 +33,36 @@ public class ExplicitCSharpBlockWithSpace
 public class ImplicitCSharpBlock
 {
     public int Value { get; set; }
+}
+```
+
+```javascript
+function explicitJs(){
+    alert('foo');
+}
+```
+
+``` javascript
+function explicitJsWithSpace(){
+    alert('foo');
+}
+```
+
+```js
+function explicitJs(){
+    alert('foo');
+}
+```
+
+``` js
+function explicitJsWithSpace(){
+    alert('foo');
+}
+```
+
+```
+function implicitJs(){
+    alert('foo');
 }
 ```
 

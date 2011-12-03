@@ -51,8 +51,8 @@ namespace Kiwi.Markdown
 		{
 			const string format = @"^{0}([\s]*){1}(.*?){0}";
 
-			_cSharpCodeBlocksRegExPreTrans = new Regex(format.Apply(CodeBlockMarker, "c#"), RegexOptions.Singleline | RegexOptions.Multiline | RegexOptions.IgnoreCase | RegexOptions.Compiled);
-			_jsCodeBlocksRegExPreTrans = new Regex(format.Apply(CodeBlockMarker, "javascript"), RegexOptions.Singleline | RegexOptions.Multiline | RegexOptions.IgnoreCase | RegexOptions.Compiled);
+			_cSharpCodeBlocksRegExPreTrans = new Regex(format.Apply(CodeBlockMarker, "(c#|csharp){1}"), RegexOptions.Singleline | RegexOptions.Multiline | RegexOptions.IgnoreCase | RegexOptions.Compiled);
+			_jsCodeBlocksRegExPreTrans = new Regex(format.Apply(CodeBlockMarker, "(js|javascript){1}"), RegexOptions.Singleline | RegexOptions.Multiline | RegexOptions.IgnoreCase | RegexOptions.Compiled);
 			_htmlCodeBlocksRegExPreTrans = new Regex(format.Apply(CodeBlockMarker, "html"), RegexOptions.Singleline | RegexOptions.Multiline | RegexOptions.IgnoreCase | RegexOptions.Compiled);
 			_cssCodeBlocksRegExPreTrans = new Regex(format.Apply(CodeBlockMarker, "css"), RegexOptions.Singleline | RegexOptions.Multiline | RegexOptions.IgnoreCase | RegexOptions.Compiled);
 			_xmlCodeBlocksRegExPreTrans = new Regex(format.Apply(CodeBlockMarker, "xml"), RegexOptions.Singleline | RegexOptions.Multiline | RegexOptions.IgnoreCase | RegexOptions.Compiled);
