@@ -6,6 +6,7 @@ namespace Kiwi.Markdown
 	public interface ITranformers
 	{
 		Func<string, string> LineBreaks { get; set; }
+		Func<string, string> HtmlEncoding { get; set; }
 		Func<string, string> GenericCodeBlock { get; set; }
 
 		Func<string, string> CSharp { get; set; }

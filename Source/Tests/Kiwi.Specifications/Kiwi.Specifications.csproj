@@ -31,7 +31,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Machine.Specifications">
+    <Reference Include="Machine.Specifications, Version=0.5.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Machine.Specifications.0.5.0.0\lib\Machine.Specifications.dll</HintPath>
     </Reference>
     <Reference Include="System" />
@@ -51,7 +51,6 @@
     <Content Include="Markdown\Complete-Specification.md">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Markdown\Complete-Specification.html">
@@ -63,6 +62,9 @@
       <Project>{36C2C8F1-9B44-48C9-A281-E68E78AE2C91}</Project>
       <Name>Kiwi.Markdown</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

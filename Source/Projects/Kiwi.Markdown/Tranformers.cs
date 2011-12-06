@@ -22,6 +22,8 @@ namespace Kiwi.Markdown
 
 		public Func<string, string> LineBreaks { get; set; }
 
+		public Func<string, string> HtmlEncoding { get; set; }
+
 		public Func<string, string> GenericCodeBlock { get; set; }
 
 		public Func<string, string> CSharp { get; set; }
@@ -62,6 +64,8 @@ namespace Kiwi.Markdown
 		protected virtual void OnInitializeTranformerFuncs()
 		{
 			LineBreaks = mc => mc.Replace("\r\n", "\n");
+
+			HtmlEncoding = mc => mc.Replace(@"\<", "&lt;").Replace(@"\>", "&gt;");
 
 			CSharp = mc => _cSharpCodeBlocksRegExPreTrans.Replace(mc, m => FormatAndColorize(m.Value, Languages.CSharp));
 
@@ -107,6 +111,8 @@ namespace Kiwi.Markdown
 			yield return Xml;
 
 			yield return GenericCodeBlock;
+
+			yield return HtmlEncoding;
 		}
 	}
 }
