@@ -34,9 +34,9 @@ namespace Kiwi.Markdown
 			};
 		}
 
-        public virtual HtmlDocument GetDocument(string docId)
+        public virtual Document GetDocument(string docId)
         {
-            return new HtmlDocument
+            return new Document
             {
                 Title = _invariantTextInfo.ToTitleCase(docId.Replace("-", " ")),
                 Content = ToHtml(ContentProvider.GetContent(docId))

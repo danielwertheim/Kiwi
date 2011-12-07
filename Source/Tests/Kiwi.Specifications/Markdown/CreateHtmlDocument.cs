@@ -14,7 +14,7 @@ namespace Kiwi.Specifications.Markdown
 		}
 	}
 
-	public class when_creating_html_document_from_markdown_file : SpecificationBase
+	public class when_creating_kiwi_document_from_markdown_file : SpecificationBase
 	{
 		Establish context = () =>
 		{
@@ -34,6 +34,6 @@ namespace Kiwi.Specifications.Markdown
 			() => _document.Content.ShouldEqual(ComplecteSpecificationHtml.Html);
 		
 		private static IMarkdownService _markdownService;
-		private static HtmlDocument _document;
+		private static Document _document;
 	}
 }

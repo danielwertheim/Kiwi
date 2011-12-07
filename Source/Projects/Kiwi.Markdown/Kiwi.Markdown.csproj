@@ -48,7 +48,7 @@
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="CoreExtensions.cs" />
-    <Compile Include="HtmlDocument.cs" />
+    <Compile Include="Document.cs" />
     <Compile Include="ContentProviders\FileContentProvider.cs" />
     <Compile Include="IContentProvider.cs" />
     <Compile Include="IMarkdownService.cs" />
