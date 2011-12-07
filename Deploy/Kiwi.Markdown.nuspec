@@ -22,8 +22,8 @@
 	</dependencies>
   </metadata>
   <files>
-    <file src="Kiwi.Markdown.dll" target="lib\net40" />
-	<file src="Kiwi.Markdown.xml" target="lib\net40" />
-	<file src="License*.txt" />
+    <file src="**\*.dll" target="lib\net40\"/>
+	<file src="**\*.xml" target="lib\net40\"/>
+	<file src="**\*.txt" target="content\"/>
   </files>  
 </package>

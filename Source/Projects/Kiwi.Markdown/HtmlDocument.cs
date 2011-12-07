@@ -3,7 +3,7 @@ using System;
 namespace Kiwi.Markdown
 {
     [Serializable]
-    public class Document
+    public class HtmlDocument
     {
         public string Title { get; set; }
 
