@@ -1,6 +1,13 @@
 # Some H1
 Some text
 
+## Some H2
+ * List item 1
+ * List item 2
+ * List item 3 with code that needs escpaing: Class\<TType\>()
+
+_Italic text_ [Link to google](http://google.com/)
+
 ```csharp
 public class ExplicitCSharpBlock
 {
