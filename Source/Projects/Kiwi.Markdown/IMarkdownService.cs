@@ -2,6 +2,8 @@ namespace Kiwi.Markdown
 {
     public interface IMarkdownService
     {
-        Document GetDocument(string docId);
+        HtmlDocument GetDocument(string docId);
+
+    	string ToHtml(string markdown);
     }
 }
