@@ -36,6 +36,17 @@ public class ExplicitCSharpBlockWithSpace
 }
 ```
 
+```csharp
+public class ExplicitCSharpBlockWithLineBreaks
+{
+    public int Value { get; set; }
+	
+	public string Foo { get; set; }
+}
+
+var i = new ExplicitCSharpBlockWithLineBreaks { Value = 42, Foo = "bar" };
+```
+
 ```
 public class ImplicitCSharpBlock
 {
