@@ -63,7 +63,7 @@ namespace Kiwi.Markdown
 
 		protected virtual void OnInitializeTranformerFuncs()
 		{
-			LineBreaks = mc => mc.Replace("\r\n", "\n").Replace("\n", "\r\n");
+			LineBreaks = mc => mc.Replace("\r\n", "\n");
 
 			HtmlEncoding = mc => mc.Replace(@"\<", "&lt;").Replace(@"\>", "&gt;");
 
@@ -83,7 +83,7 @@ namespace Kiwi.Markdown
 		protected virtual string FormatAndColorize(string value, ILanguage language = null)
 		{
 			var output = new StringBuilder();
-			foreach (var line in value.Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries).Where(s => !s.StartsWith(CodeBlockMarker)))
+			foreach (var line in value.Split(new[] { "\n" }, StringSplitOptions.None).Where(s => !s.StartsWith(CodeBlockMarker)))
 			{
 				if(language == null)
 					output.Append(new string(' ', 4));
