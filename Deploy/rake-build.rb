@@ -15,8 +15,7 @@ require 'albacore'
 @env_buildversion = "0.7.1" + (ENV['env_buildnumber'].to_s.empty? ? "" : ".#{ENV['env_buildnumber'].to_s}")
 @env_buildconfigname = ENV['env_buildconfigname'].to_s.empty? ? "Release" : ENV['env_buildconfigname'].to_s
 @env_buildname = "#{@env_solutionname}-v#{@env_buildversion}-#{@env_buildconfigname}"
-@env_buildfolderpath = "#{ENV['env_buildfolderpath']}Builds/#{@env_buildname}"
-@env_outputfolderpath = @env_buildfolderpath
+@env_buildfolderpath = @env_buildname
 #--------------------------------------
 #optional if no remote nuget actions should be performed
 @env_nugetPublishApiKey = ENV['env_nugetPublishApiKey']
@@ -25,13 +24,13 @@ require 'albacore'
 #--------------------------------------
 # Reusable vars
 #--------------------------------------
-kiwiMarkdownOutputPath = "#{@env_outputfolderpath}/#{@env_projectnameKiwiMarkdown}"
+kiwiMarkdownOutputPath = "#{@env_buildfolderpath}/#{@env_projectnameKiwiMarkdown}"
 #--------------------------------------
 # Albacore flow controlling tasks
 #--------------------------------------
-task :ci => [:buildIt, :copyIt, :testIt, :zipIt, :packIt, :cleanItUp, :publishIt]
+task :ci => [:buildIt, :copyIt, :testIt, :zipIt, :packIt, :publishIt]
 
-task :local => [:buildIt, :copyIt, :testIt, :zipIt, :packIt, :cleanItUp]
+task :local => [:buildIt, :copyIt, :testIt, :zipIt, :packIt]
 #--------------------------------------
 task :testIt => [:unittests, :specifications]
 
@@ -54,11 +53,7 @@ end
 
 task :ensureCleanBuildFolder do
 	FileUtils.rm_rf(@env_buildfolderpath)
-	FileUtils.mkdir_p(@env_outputfolderpath)
-end
-
-task :cleanItUp do
-	FileUtils.rm_rf(kiwiMarkdownOutputPath)
+	FileUtils.mkdir_p(@env_buildfolderpath)
 end
 
 msbuild :buildIt => [:ensureCleanBuildFolder, :versionIt] do |msb|
