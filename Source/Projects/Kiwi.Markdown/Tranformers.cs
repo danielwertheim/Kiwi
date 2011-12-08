@@ -88,7 +88,10 @@ namespace Kiwi.Markdown
 				if(language == null)
 					output.Append(new string(' ', 4));
 
-				output.AppendLine(line);
+				if(line == "\n")
+					output.AppendLine();
+				else
+					output.AppendLine(line);
 			}
 
 			return language != null
