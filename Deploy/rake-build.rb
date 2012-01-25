@@ -15,7 +15,7 @@ require 'albacore'
 @env_buildversion = "0.7.1" + (ENV['env_buildnumber'].to_s.empty? ? "" : ".#{ENV['env_buildnumber'].to_s}")
 @env_buildconfigname = ENV['env_buildconfigname'].to_s.empty? ? "Release" : ENV['env_buildconfigname'].to_s
 @env_buildname = "#{@env_solutionname}-v#{@env_buildversion}-#{@env_buildconfigname}"
-@env_buildfolderpath = @env_buildname
+@env_buildfolderpath = 'build'
 #--------------------------------------
 #optional if no remote nuget actions should be performed
 @env_nugetPublishApiKey = ENV['env_nugetPublishApiKey']
@@ -28,17 +28,17 @@ kiwiMarkdownOutputPath = "#{@env_buildfolderpath}/#{@env_projectnameKiwiMarkdown
 #--------------------------------------
 # Albacore flow controlling tasks
 #--------------------------------------
-task :ci => [:buildIt, :copyIt, :testIt, :zipIt, :packIt, :publishIt]
+task :ci => [:buildIt, :copyKiwiMarkdown, :testIt, :zipIt, :packIt, :publishIt]
 
-task :local => [:buildIt, :copyIt, :testIt, :zipIt, :packIt]
+task :local => [:buildIt, :copyKiwiMarkdown, :testIt, :zipIt, :packIt]
 #--------------------------------------
-task :testIt => [:unittests, :specifications]
+task :testIt => [:unittests]
 
 task :zipIt => [:zipKiwiMarkdown]
 
 task :packIt => [:packKiwiMarkdownNuGet]
 
-task :publishIt => [:publishKiwiMarkDownNuGet]
+task :publishIt => [:publishKiwiMarkdownNuGet]
 #--------------------------------------
 # Albacore tasks
 #--------------------------------------
@@ -62,7 +62,7 @@ msbuild :buildIt => [:ensureCleanBuildFolder, :versionIt] do |msb|
 	msb.solution = "#{@env_solutionfolderpath}/#{@env_solutionname}.sln"
 end
 
-task :copyIt do
+task :copyKiwiMarkdown do
 	FileUtils.mkdir_p(kiwiMarkdownOutputPath)
 	FileUtils.cp_r(FileList["#{@env_solutionfolderpath}/Projects/#{@env_projectnameKiwiMarkdown}/bin/#{@env_buildconfigname}/**"], kiwiMarkdownOutputPath)
 end
@@ -73,15 +73,9 @@ nunit :unittests do |nunit|
 	nunit.assemblies FileList["#{@env_solutionfolderpath}/Tests/#{@env_solutionname}.**UnitTests/bin/#{@env_buildconfigname}/#{@env_solutionname}.**UnitTests.dll"]
 end
 
-mspec :specifications do |mspec|
-	mspec.command = "#{@env_solutionfolderpath}/packages/Machine.Specifications.0.5.0.0/tools/mspec-clr4.exe"
-	mspec.options "--html #{@env_buildfolderpath}/MSpec-Report-#{@env_solutionname}.html"
-	mspec.assemblies FileList["#{@env_solutionfolderpath}/Tests/#{@env_solutionname}.**Specifications/bin/#{@env_buildconfigname}/#{@env_solutionname}.**Specifications.dll"]
-end
-
 zip :zipKiwiMarkdown do |zip|
 	zip.directories_to_zip kiwiMarkdownOutputPath
-	zip.output_file = "#{@env_buildname}-#{@env_projectnameKiwiMarkdownAdmin}.zip"
+	zip.output_file = "#{@env_buildname}.zip"
 	zip.output_path = @env_buildfolderpath
 end
 
@@ -90,7 +84,7 @@ exec :packKiwiMarkdownNuGet do |cmd|
 	cmd.parameters = "pack #{@env_projectnameKiwiMarkdown}.nuspec -version #{@env_buildversion} -basepath #{kiwiMarkdownOutputPath} -outputdirectory #{@env_buildfolderpath}"
 end
 
-exec :publishKiwiMarkDownNuGet do |cmd|
+exec :publishKiwiMarkdownNuGet do |cmd|
 	cmd.command = "NuGet.exe"
 	cmd.parameters = "push #{@env_buildfolderpath}/#{@env_projectnameKiwiMarkdown}.#{@env_buildversion}.nupkg #{@env_nugetPublishApiKey} -src #{@env_nugetPublishUrl}"
 end
