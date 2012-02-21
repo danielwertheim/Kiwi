@@ -22,3 +22,6 @@ _ReSharper.*
 
 #windows stuff
 Thumbs.db
+
+#project specific
+!Source/Projects/Kiwi.Mvc3/[Aa]pp_[Dd]ata/
