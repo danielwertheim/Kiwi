@@ -1,0 +1,11 @@
+﻿<configuration>
+  <system.web>
+    <caching>
+      <outputCacheSettings>
+        <outputCacheProfiles>
+          <add name="KiwiWikiCache" duration="3600" varyByParam="docId"/>
+        </outputCacheProfiles>
+      </outputCacheSettings>
+    </caching>
+  </system.web>
+</configuration>
