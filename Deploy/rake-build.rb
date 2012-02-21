@@ -44,7 +44,7 @@ task :zipIt => [:zipKiwiMarkdown, :zipKiwiMvc3]
 
 task :packIt => [:packKiwiMarkdownNuGet, :packKiwiMvc3NuGet]
 
-task :publishIt => [:publishKiwiMarkdownNuGet, :publishKiwiMvc3]
+task :publishIt => [:publishKiwiMarkdownNuGet, :publishKiwiMvc3NuGet]
 #--------------------------------------
 # Albacore tasks
 #--------------------------------------
