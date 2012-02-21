@@ -17,7 +17,8 @@ require 'albacore'
 @env_projectnameKiwiMvc3 = 'Kiwi.Mvc3'
 
 @env_buildfolderpath = 'build'
-@env_buildversion = "0.8.0" + (ENV['env_buildnumber'].to_s.empty? ? "" : ".#{ENV['env_buildnumber'].to_s}")
+@env_version = "0.8.0"
+@env_buildversion = @env_version + (ENV['env_buildnumber'].to_s.empty? ? "" : ".#{ENV['env_buildnumber'].to_s}")
 @env_buildconfigname = ENV['env_buildconfigname'].to_s.empty? ? "Release" : ENV['env_buildconfigname'].to_s
 @env_buildnameKiwiMarkdown = "#{@env_projectnameKiwiMarkdown}-v#{@env_buildversion}-#{@env_buildconfigname}"
 @env_buildnameKiwiMvc3 = "#{@env_projectnameKiwiMvc3}-v#{@env_buildversion}-#{@env_buildconfigname}"
@@ -53,7 +54,7 @@ assemblyinfo :versionIt do |asm|
 
 	asm.input_file = sharedAssemblyInfoPath
 	asm.output_file = sharedAssemblyInfoPath
-	asm.version = @env_buildversion
+	asm.version = @env_version
 	asm.file_version = @env_buildversion
 end
 
@@ -106,20 +107,20 @@ end
 
 exec :packKiwiMarkdownNuGet do |cmd|
 	cmd.command = "NuGet.exe"
-	cmd.parameters = "pack #{@env_projectnameKiwiMarkdown}.nuspec -version #{@env_buildversion} -basepath #{kiwiMarkdownOutputPath} -outputdirectory #{@env_buildfolderpath}"
+	cmd.parameters = "pack #{@env_projectnameKiwiMarkdown}.nuspec -version #{@env_version} -basepath #{kiwiMarkdownOutputPath} -outputdirectory #{@env_buildfolderpath}"
 end
 
 exec :packKiwiMvc3NuGet do |cmd|
 	cmd.command = "NuGet.exe"
-	cmd.parameters = "pack #{@env_projectnameKiwiMvc3}.nuspec -version #{@env_buildversion} -basepath #{kiwiMvc3OutputPath} -outputdirectory #{@env_buildfolderpath}"
+	cmd.parameters = "pack #{@env_projectnameKiwiMvc3}.nuspec -version #{@env_version} -basepath #{kiwiMvc3OutputPath} -outputdirectory #{@env_buildfolderpath}"
 end
 
 exec :publishKiwiMarkdownNuGet do |cmd|
 	cmd.command = "NuGet.exe"
-	cmd.parameters = "push #{@env_buildfolderpath}/#{@env_projectnameKiwiMarkdown}.#{@env_buildversion}.nupkg #{@env_nugetPublishApiKey} -src #{@env_nugetPublishUrl}"
+	cmd.parameters = "push #{@env_buildfolderpath}/#{@env_projectnameKiwiMarkdown}.#{@env_version}.nupkg #{@env_nugetPublishApiKey} -src #{@env_nugetPublishUrl}"
 end
 
 exec :publishKiwiMvc3NuGet do |cmd|
 	cmd.command = "NuGet.exe"
-	cmd.parameters = "push #{@env_buildfolderpath}/#{@env_projectnameKiwiMvc3}.#{@env_buildversion}.nupkg #{@env_nugetPublishApiKey} -src #{@env_nugetPublishUrl}"
+	cmd.parameters = "push #{@env_buildfolderpath}/#{@env_projectnameKiwiMvc3}.#{@env_version}.nupkg #{@env_nugetPublishApiKey} -src #{@env_nugetPublishUrl}"
 end
