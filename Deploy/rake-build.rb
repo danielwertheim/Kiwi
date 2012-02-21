@@ -1,3 +1,4 @@
+#Template v1.0.0
 #--------------------------------------
 # Dependencies
 #--------------------------------------
@@ -53,7 +54,7 @@ assemblyinfo :versionIt do |asm|
 	asm.input_file = sharedAssemblyInfoPath
 	asm.output_file = sharedAssemblyInfoPath
 	asm.version = @env_buildversion
-	asm.file_version = @env_buildversion  
+	asm.file_version = @env_buildversion
 end
 
 task :ensureCleanBuildFolder do
