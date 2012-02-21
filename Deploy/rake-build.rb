@@ -12,7 +12,7 @@ require 'albacore'
 @env_solutionname = 'Kiwi'
 @env_projectnameKiwiMarkdown = 'Kiwi.Markdown'
 @env_solutionfolderpath = "../Source"
-@env_buildversion = "0.7.1" + (ENV['env_buildnumber'].to_s.empty? ? "" : ".#{ENV['env_buildnumber'].to_s}")
+@env_buildversion = "0.8.0" + (ENV['env_buildnumber'].to_s.empty? ? "" : ".#{ENV['env_buildnumber'].to_s}")
 @env_buildconfigname = ENV['env_buildconfigname'].to_s.empty? ? "Release" : ENV['env_buildconfigname'].to_s
 @env_buildname = "#{@env_solutionname}-v#{@env_buildversion}-#{@env_buildconfigname}"
 @env_buildfolderpath = 'build'

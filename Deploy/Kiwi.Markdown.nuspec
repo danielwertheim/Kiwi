@@ -4,7 +4,7 @@
     <id>Kiwi.Markdown</id>    
     <title>Kiwi.Markdown</title>
 	<version>0.0.0.0</version>
-	<authors>Daniel Wertheim</authors>
+	<authors>danielwertheim</authors>
 	<copyright>Daniel Wertheim</copyright>
 	<summary>Kiwi.Markdown helps you embed your GitHub wiki locally by transforming GitHub flavored Markdown to HTML with support for syntax highlighting.</summary>
     <description>
