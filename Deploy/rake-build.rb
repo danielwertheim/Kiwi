@@ -17,7 +17,7 @@ require 'albacore'
 @env_projectnameKiwiMvc3 = 'Kiwi.Mvc3'
 
 @env_buildfolderpath = 'build'
-@env_version = "0.8.0"
+@env_version = "0.8.1"
 @env_buildversion = @env_version + (ENV['env_buildnumber'].to_s.empty? ? "" : ".#{ENV['env_buildnumber'].to_s}")
 @env_buildconfigname = ENV['env_buildconfigname'].to_s.empty? ? "Release" : ENV['env_buildconfigname'].to_s
 @env_buildnameKiwiMarkdown = "#{@env_projectnameKiwiMarkdown}-v#{@env_buildversion}-#{@env_buildconfigname}"
