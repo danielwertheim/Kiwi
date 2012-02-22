@@ -88,7 +88,7 @@
     <None Include="web.config.transform" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Wiki\Doc.cshtml" />
+    <None Include="Views\Wiki\Doc.cshtml.pp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App_Data\MarkdownFiles\Home.md" />
