@@ -30,9 +30,9 @@ kiwiMvc3OutputPath = "#{@env_buildfolderpath}/#{@env_projectnameKiwiMvc3}"
 #--------------------------------------
 # Albacore flow controlling tasks
 #--------------------------------------
-task :ci => [:buildIt, :copyKiwiMarkdown, :copyKiwiMvc3, :testIt, :zipIt, :packIt]
+task :ci => [:buildIt, :copyKiwiMarkdown, :testIt, :zipIt, :packIt]
 
-task :local => [:buildIt, :copyKiwiMarkdown, :copyKiwiMvc3, :testIt, :zipIt, :packIt]
+task :local => [:buildIt, :copyKiwiMarkdown, :testIt, :zipIt, :packIt]
 #--------------------------------------
 task :testIt => [:unittests]
 
@@ -67,19 +67,6 @@ task :copyKiwiMarkdown do
 	FileUtils.cp_r(FileList["#{@env_solutionfolderpath}/Projects/#{@env_projectnameKiwiMarkdown}/bin/#{@env_buildconfigname}/**"], kiwiMarkdownOutputPath)
 end
 
-task :copyKiwiMvc3 do
-        copyMvc3FromPath = "#{@env_solutionfolderpath}/Projects/#{@env_projectnameKiwiMvc3}"
-        
-        #Give some love to this
-        FileUtils.mkdir_p(kiwiMvc3OutputPath)
-		FileUtils.cp_r(FileList["#{copyMvc3FromPath}/App_Data"], kiwiMvc3OutputPath)
-        FileUtils.cp_r(FileList["#{copyMvc3FromPath}/App_Start"], kiwiMvc3OutputPath)
-		FileUtils.cp_r(FileList["#{copyMvc3FromPath}/Controllers"], kiwiMvc3OutputPath)
-        FileUtils.cp_r(FileList["#{copyMvc3FromPath}/Views"], kiwiMvc3OutputPath)
-        FileUtils.cp_r(FileList["#{copyMvc3FromPath}/*.transform"], kiwiMvc3OutputPath)    
-		FileUtils.cp_r(FileList["#{copyMvc3FromPath}/*.pp"], kiwiMvc3OutputPath)    
-end
-
 nunit :unittests do |nunit|
 	nunit.command = "#{@env_solutionfolderpath}/packages/NUnit.2.5.10.11092/tools/nunit-console.exe"
 	nunit.options "/framework=v4.0.30319","/xml=#{@env_buildfolderpath}/NUnit-Report-#{@env_solutionname}-UnitTests.xml"
@@ -105,5 +92,5 @@ end
 
 exec :packKiwiMvc3NuGet do |cmd|
 	cmd.command = "NuGet.exe"
-	cmd.parameters = "pack #{@env_projectnameKiwiMvc3}.nuspec -version #{@env_version} -basepath #{kiwiMvc3OutputPath} -outputdirectory #{@env_buildfolderpath}"
+	cmd.parameters = "pack #{@env_projectnameKiwiMvc3}.nuspec -version #{@env_version} -basepath #{@env_solutionfolderpath} -outputdirectory #{@env_buildfolderpath}"
 end

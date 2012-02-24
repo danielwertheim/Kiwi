@@ -20,6 +20,11 @@
 	</dependencies>
   </metadata>
   <files>
-    <file src="**\*.*" target="content\"/>	
-  </files>  
+      <file src="Projects\Kiwi.Mvc3\App_Data\**\*.md" target="Content\App_Data" />
+	  <file src="Projects\Kiwi.Mvc3\App_Start\**\*.pp" target="Content\App_Start" />
+	  <file src="Projects\Kiwi.Mvc3\Controllers\**\*.pp" target="Content\Controllers" />
+	  <file src="Projects\Kiwi.Mvc3\Views\**\*.pp" target="Content\Views" />
+	  <file src="Projects\Kiwi.Mvc3\*.transform" target="Content\" />
+	  <file src="Projects\Kiwi.Mvc3\*.pp" target="Content\" />
+  </files>
 </package>
