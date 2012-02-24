@@ -35,13 +35,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ColorCode">
-      <HintPath>..\..\packages\Kiwi.Markdown.0.7.1\lib\net40\ColorCode.dll</HintPath>
+      <HintPath>..\..\packages\ColorCode.1.0.1\lib\ColorCode.dll</HintPath>
     </Reference>
     <Reference Include="Kiwi.Markdown">
-      <HintPath>..\..\packages\Kiwi.Markdown.0.7.1\lib\net40\Kiwi.Markdown.dll</HintPath>
+      <HintPath>..\..\packages\Kiwi.Markdown.0.8.0\lib\net40\Kiwi.Markdown.dll</HintPath>
     </Reference>
     <Reference Include="MarkdownSharp">
-      <HintPath>..\..\packages\Kiwi.Markdown.0.7.1\lib\net40\MarkdownSharp.dll</HintPath>
+      <HintPath>..\..\packages\MarkdownSharp.1.13.0.0\lib\35\MarkdownSharp.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
@@ -84,13 +84,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="packages.config" />
     <None Include="web.config.transform" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Wiki\Doc.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="packages.config" />
+    <None Include="Views\Wiki\Doc.cshtml.pp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App_Data\MarkdownFiles\Home.md" />
