@@ -17,10 +17,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kiwi.UnitTests", "Tests\Kiw
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kiwi.Mvc3", "Projects\Kiwi.Mvc3\Kiwi.Mvc3.csproj", "{416E1EEB-C0E3-4D38-86EA-822D442B18C9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kiwi.Mvc3.Demo", "Demos\Kiwi.AspNetMvc3.Demo\Kiwi.Mvc3.Demo.csproj", "{0B7A5C02-7644-4988-893A-6A929A9B6B38}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Demos", "Demos", "{3E29BF00-39A0-4CBE-B62C-AEFF32C58B67}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,10 +39,6 @@ Global
 		{416E1EEB-C0E3-4D38-86EA-822D442B18C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{416E1EEB-C0E3-4D38-86EA-822D442B18C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{416E1EEB-C0E3-4D38-86EA-822D442B18C9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0B7A5C02-7644-4988-893A-6A929A9B6B38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0B7A5C02-7644-4988-893A-6A929A9B6B38}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0B7A5C02-7644-4988-893A-6A929A9B6B38}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0B7A5C02-7644-4988-893A-6A929A9B6B38}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -54,6 +46,5 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{229818D1-B95E-41B1-BE1D-E00C8FD131AE} = {D9596BDD-3F90-48D9-8027-EC2C283AF714}
 		{A2808980-7667-42A9-9686-085F8ADF40BD} = {D9596BDD-3F90-48D9-8027-EC2C283AF714}
-		{0B7A5C02-7644-4988-893A-6A929A9B6B38} = {3E29BF00-39A0-4CBE-B62C-AEFF32C58B67}
 	EndGlobalSection
 EndGlobal
