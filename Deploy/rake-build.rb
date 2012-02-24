@@ -23,11 +23,6 @@ require 'albacore'
 @env_buildnameKiwiMarkdown = "#{@env_projectnameKiwiMarkdown}-v#{@env_buildversion}-#{@env_buildconfigname}"
 @env_buildnameKiwiMvc3 = "#{@env_projectnameKiwiMvc3}-v#{@env_buildversion}-#{@env_buildconfigname}"
 #--------------------------------------
-#optional if no remote nuget actions should be performed
-@env_nugetPublishApiKey = ENV['env_nugetPublishApiKey']
-@env_nugetPublishUrl = ENV['env_nugetPublishUrl']
-@env_nugetSourceUrl = ENV['env_nugetSourceUrl']
-#--------------------------------------
 # Reusable vars
 #--------------------------------------
 kiwiMarkdownOutputPath = "#{@env_buildfolderpath}/#{@env_projectnameKiwiMarkdown}"
@@ -35,7 +30,7 @@ kiwiMvc3OutputPath = "#{@env_buildfolderpath}/#{@env_projectnameKiwiMvc3}"
 #--------------------------------------
 # Albacore flow controlling tasks
 #--------------------------------------
-task :ci => [:buildIt, :copyKiwiMarkdown, :copyKiwiMvc3, :testIt, :zipIt, :packIt, :publishIt]
+task :ci => [:buildIt, :copyKiwiMarkdown, :copyKiwiMvc3, :testIt, :zipIt, :packIt]
 
 task :local => [:buildIt, :copyKiwiMarkdown, :copyKiwiMvc3, :testIt, :zipIt, :packIt]
 #--------------------------------------
@@ -44,8 +39,6 @@ task :testIt => [:unittests]
 task :zipIt => [:zipKiwiMarkdown, :zipKiwiMvc3]
 
 task :packIt => [:packKiwiMarkdownNuGet, :packKiwiMvc3NuGet]
-
-task :publishIt => [:publishKiwiMarkdownNuGet, :publishKiwiMvc3NuGet]
 #--------------------------------------
 # Albacore tasks
 #--------------------------------------
@@ -113,14 +106,4 @@ end
 exec :packKiwiMvc3NuGet do |cmd|
 	cmd.command = "NuGet.exe"
 	cmd.parameters = "pack #{@env_projectnameKiwiMvc3}.nuspec -version #{@env_version} -basepath #{kiwiMvc3OutputPath} -outputdirectory #{@env_buildfolderpath}"
-end
-
-exec :publishKiwiMarkdownNuGet do |cmd|
-	cmd.command = "NuGet.exe"
-	cmd.parameters = "push #{@env_buildfolderpath}/#{@env_projectnameKiwiMarkdown}.#{@env_version}.nupkg #{@env_nugetPublishApiKey} -src #{@env_nugetPublishUrl}"
-end
-
-exec :publishKiwiMvc3NuGet do |cmd|
-	cmd.command = "NuGet.exe"
-	cmd.parameters = "push #{@env_buildfolderpath}/#{@env_projectnameKiwiMvc3}.#{@env_version}.nupkg #{@env_nugetPublishApiKey} -src #{@env_nugetPublishUrl}"
 end
