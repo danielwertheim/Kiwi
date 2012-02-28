@@ -30,9 +30,9 @@ kiwiMvc3OutputPath = "#{@env_buildfolderpath}/#{@env_projectnameKiwiMvc3}"
 #--------------------------------------
 # Albacore flow controlling tasks
 #--------------------------------------
-task :ci => [:buildIt, :copyKiwiMarkdown, :testIt, :zipIt, :packIt]
+task :ci => [:installNuGetPackages, :buildIt, :copyKiwiMarkdown, :testIt, :zipIt, :packIt]
 
-task :local => [:buildIt, :copyKiwiMarkdown, :testIt, :zipIt, :packIt]
+task :local => [:installNuGetPackages, :buildIt, :copyKiwiMarkdown, :testIt, :zipIt, :packIt]
 #--------------------------------------
 task :testIt => [:unittests]
 
@@ -42,6 +42,12 @@ task :packIt => [:packKiwiMarkdownNuGet, :packKiwiMvc3NuGet]
 #--------------------------------------
 # Albacore tasks
 #--------------------------------------
+task :installNuGetPackages do
+	FileList["#{@env_solutionfolderpath}/**/packages.config"].each { |filepath|
+		sh "NuGet.exe i #{filepath} -o Source/Packages"
+	}
+end
+
 assemblyinfo :versionIt do |asm|
 	sharedAssemblyInfoPath = "#{@env_solutionfolderpath}/SharedAssemblyInfo.cs"
 
