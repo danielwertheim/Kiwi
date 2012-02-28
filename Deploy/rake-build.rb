@@ -44,7 +44,7 @@ task :packIt => [:packKiwiMarkdownNuGet, :packKiwiMvc3NuGet]
 #--------------------------------------
 task :installNuGetPackages do
 	FileList["#{@env_solutionfolderpath}/**/packages.config"].each { |filepath|
-		sh "NuGet.exe i #{filepath} -o Source/Packages"
+		sh "NuGet.exe i #{filepath} -o #{@env_solutionfolderpath}/packages"
 	}
 end
 
