@@ -16,7 +16,7 @@ namespace $rootnamespace$.App_Start
         {
             routes.MapRoute(
                 "Wiki",
-                "wiki/{docId}",
+                "wiki/{*docId}",
                 new { controller = "wiki", action = "doc", docId = "home" });
         }
     }
